@@ -1,0 +1,146 @@
+---
+vagrantfile-local:
+    # Virtual Machine configuration
+    vm:
+        # Box to use
+        box: puphpet/ubuntu1404-x64
+        box_url: puphpet/ubuntu1404-x64
+        # Hostname of the box (leave empty if unsure)
+        hostname: 'vagrant.up'
+        # Enable box auto-check for updates (recommended: on)
+        box_check_update: true
+        # Network setup
+        network:
+            # Enable public (bridged) network?
+            public_network: '1'
+            # Private network IP address
+            private_network: 192.168.64.3
+            # Forwarded ports
+            forwarded_port: {  }
+        synced_folder:
+            # Each entry needs a unique key
+            myProjects:
+                # Set up folder ownership
+                owner: www-data
+                group: www-data
+                # Location in host
+                source: ~/Projects
+                # Location in guest
+                target: /mnt/Projects
+                # Sync type can be default, nfs, smb or rsync
+                sync_type: default
+                # If sync_type is rsync these are the rsync options
+                rsync:
+                    args:
+                        - '--verbose'
+                        - '--archive'
+                        - '-z'
+                    exclude:
+                        - .vagrant/
+                    auto: 'false'
+        # Memory, in Mb
+        memory: '512'
+        # Virtual CPUs
+        cpus: '1'
+        # A message to show after vagrant up
+        post_up_message: ''
+        # Provider configuration
+        provider:
+            # Settings for VirtualBox
+            virtualbox:
+                modifyvm:
+                    natdnshostresolver1: on
+    # SSH configuration
+    ssh:
+        host: null
+        port: null
+        private_key_path: null
+        username: vagrant
+        guest_port: null
+        keep_alive: true
+        forward_agent: false
+        forward_x11: false
+        shell: 'bash -l'
+    # Configure PHP versions to install
+    multiphp:
+        # For each PHP version we have a phpXY entry where X.Y is the Major.Minor version of PHP to install
+        php53:
+            # Install this version of PHP?
+            install: 1
+            # Where to download the sources from? Make sure it is a /from/this/mirror URL from php.net, not /choose/a/mirror!!!
+            source_url: http://de1.php.net/get/php-5.3.29.tar.bz2/from/this/mirror
+            # Should I make it the default PHP version? Only set 1 version as the default or all hell will break lose
+            default: 0
+            # The hostname to use for this version of PHP
+            hostname: vagrant53.up
+            # Install XDebug?
+            xdebug_install: 1
+            # Where to download XDebug from? Yes, we allow different XDebug versions for each version of PHP.
+            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+        php54:
+            install: 1
+            source_url: http://de1.php.net/get/php-5.4.34.tar.bz2/from/this/mirror
+            default: 1
+            hostname: vagrant54.up
+            xdebug_install: 1
+            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+        php55:
+            install: 1
+            source_url: http://de1.php.net/get/php-5.5.18.tar.bz2/from/this/mirror
+            default: 0
+            hostname: vagrant55.up
+            xdebug_install: 1
+            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+        php56:
+            install: 1
+            source_url: http://de1.php.net/get/php-5.6.2.tar.bz2/from/this/mirror
+            default: 0
+            hostname: vagrant56.up
+            xdebug_install: 1
+            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+    extrascripts:
+        phpMyAdmin:
+            install: 1
+            source_url: http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.3.1/phpMyAdmin-4.3.1-all-languages.tar.gz?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Fdownloads.php&ts=1418133951&use_mirror=netcologne
+        pml:
+            install: 1
+            source_url: https://github.com/potsky/PimpMyLog/tarball/master
+    installsites:
+        dev3:
+            type: joomla
+            source: latest
+            linkextensions: 1
+        test3:
+            type: joomla
+            source: latest
+            linkextensions: 0
+        jdev:
+            type: joomla
+            source: /mnt/Projects/master/joomla-cms
+            linkextensions: 0
+    extensions:
+        backup:
+            type: relink
+            source: /mnt/Projects/akeeba/backup
+        jadmintools:
+            type: relink
+            source: /mnt/Projects/akeeba/jadmintools
+        ats:
+            type: relink
+            source: /mnt/Projects/akeeba/ats
+        ars:
+            type: relink
+            source: /mnt/Projects/akeeba/ars
+        akeebasubs:
+            type: relink
+            source: /mnt/Projects/akeeba/akeebasubs
+        docimport:
+            type: relink
+            source: /mnt/Projects/akeeba/docimport
+        cmsupdate:
+            type: relink
+            source: /mnt/Projects/akeeba/cmsupdate
+        fof:
+            type: library
+            source: /mnt/Projects/akeeba/fof/fof
+            target: libraries/f0f
