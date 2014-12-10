@@ -50,7 +50,7 @@ fi
 if [ "$1" = "latest" ]
 then
 	# Find the latest Joomla! version's download URL – e.g. https://github.com/joomla/joomla-cms/releases/download/3.3.6/Joomla_3.3.6-Stable-Full_Package.zip
-	LATEST_JOOMLA_URL=`curl -L -s "http://www.joomla.org/download.html" -o - | grep id=\"latest | grep -o '"http[s]*://[^"]*"' | grep -o 'http[s]*://[^"]*'`
+	LATEST_JOOMLA_URL=`curl -L -s "http://www.joomla.org/download.html" -o - | grep id=\"latest | head | grep -o '"http[s]*://[^"]*"' | grep -o 'http[s]*://[^"]*'`
 
 	# Get the base name of the latest Joomla! version download URL – e.g. Joomla_3.3.6-Stable-Full_Package.zip
 	JOOMLA_BASENAME=${LATEST_JOOMLA_URL##*/}
