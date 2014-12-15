@@ -34,7 +34,7 @@ fi
 MODS01=( magic-quotes )
 MODS05=( opcache )
 MODS10=( mysqlnd pdo )
-MODS20=( curl gd gmp imagick intl json ldap mailcatcher mongo mysql mysqli oauth odbc pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql pspell readline recode redis sasl snmp sqlite3 tidy xcache xdebug xmlrpc xsl )
+MODS20=( curl gd gmp imagick intl json ldap mailcatcher mongo mysql mysqli oauth odbc pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql pspell readline recode redis sasl sqlite3 tidy xcache xdebug xmlrpc xsl )
 DIRS=( apache2 cli )
 
 for dir in "${DIRS[@]}"
