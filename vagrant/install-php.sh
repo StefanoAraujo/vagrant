@@ -186,9 +186,10 @@ then
 	  --enable-ipv6 \
 	  --with-mcrypt \
 	  --with-imap-ssl 1>/dev/null 2>/dev/null \
-	&& make 1>/dev/null 2>/dev/null \
-	&& make install 1>/dev/null 2>/dev/null
+	&& make 1>/dev/null 2>/dev/null
+	make install 1>/dev/null 2>/dev/null
 
+	rm -rf /usr/include/$2
 	mv /usr/include/php /usr/include/$2
 
 	echo "Done configuring and building PHP ($2)."

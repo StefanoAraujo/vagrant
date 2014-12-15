@@ -176,7 +176,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       if (values['install'].to_i == 1) && (values['xdebug_install'].to_i == 1)
         devbox.vm.provision 'shell' do |s|
           s.path = 'vagrant/install-xdebug.sh'
-          s.args = [values['source_url'], "#{phpversion}"]
+          s.args = [values['xdebug_url'], "#{phpversion}"]
         end
       end
     end

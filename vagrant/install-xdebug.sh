@@ -17,8 +17,6 @@ FLAG_FILE="/vagrant/vagrant/downloads/$2.xdebug.installed"
 
 if [ ! -f "$FLAG_FILE" ]
 then
-	touch "$FLAG_FILE"
-
 	# Download the source files, if required
 	if [ ! -f "$DOWNLOAD_FILE" ]
 	then
@@ -26,6 +24,14 @@ then
 		curl -L "$DOWNLOAD_URL" -o "$DOWNLOAD_FILE" 1>/dev/null 2>/dev/null
 		echo "Done downloading $2"
 	fi
+
+	if [ ! -f "$DOWNLOAD_FILE" ]
+	then
+		echo "Could not install XDebug for $2"
+		exit;
+	fi
+
+	touch "$FLAG_FILE"
 
 	# Create the build directory
 	echo "Extracting the sources to /usr/local/src/xdebug-$2"
