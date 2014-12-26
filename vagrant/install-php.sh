@@ -161,7 +161,6 @@ then
 	  --with-png-dir=shared,/usr \
 	  --with-freetype-dir=shared,/usr \
 	  --with-ttf=shared,/usr \
-	  --with-t1lib=shared,/usr \
 	  --with-ldap=shared,/usr \
 	  --with-mysql=shared,/usr \
 	  --with-mysqli=shared,/usr/bin/mysql_config \
