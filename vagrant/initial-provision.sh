@@ -35,7 +35,7 @@ echo 'Finished installing base packages'
 echo "Installing PHP build dependencies"
 # Install all dependencies automatically
 apt-get build-dep php5 --assume-yes
-apt-get -y install libt1-dev libgmp-dev libmcrypt-dev
+apt-get -y install libgmp-dev libmcrypt-dev
 # For some reason PHP seems to be looking at the wrong directory for freetype.h
 if [[ ! -f /usr/include/freetype2/freetype/freetype.h ]]
 then
