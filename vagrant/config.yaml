@@ -76,28 +76,29 @@ vagrantfile-local:
             # Install XDebug?
             xdebug_install: 1
             # Where to download XDebug from? Yes, we allow different XDebug versions for each version of PHP.
-            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+            # WARNING: Do not change the download URLs for XDebug for PHP 5.3. XDebug 2.3 seems to only support PHP 5.4 and later (makes sense, PHP 5.3 is EOL)
+            xdebug_url: http://xdebug.org/files/xdebug-2.2.7.tgz
         php54:
             install: 1
-            source_url: http://de1.php.net/get/php-5.4.34.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.4.39.tar.bz2/from/this/mirror
             default: 1
             hostname: vagrant54.up
             xdebug_install: 1
-            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+            xdebug_url: http://xdebug.org/files/xdebug-2.3.2.tgz
         php55:
             install: 1
-            source_url: http://de1.php.net/get/php-5.5.18.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.5.23.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant55.up
             xdebug_install: 1
-            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+            xdebug_url: http://xdebug.org/files/xdebug-2.3.2.tgz
         php56:
             install: 1
-            source_url: http://de1.php.net/get/php-5.6.2.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.6.7.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant56.up
             xdebug_install: 1
-            xdebug_url: http://xdebug.org/files/xdebug-2.2.6.tgz
+            xdebug_url: http://xdebug.org/files/xdebug-2.3.2.tgz
     extrascripts:
         phpMyAdmin:
             install: 1

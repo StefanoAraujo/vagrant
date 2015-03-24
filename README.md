@@ -2,7 +2,7 @@
 
 A Vagrant server for Joomla! core and extension development.
 
-**ATTENTION: THIS IS STILL WORK IN PROGRESS**. Backup your data before spinning up this dev box.
+**ATTENTION: We consider this to be always work in progress**. Backup your data before spinning up this dev box.
 
 **NO WARRANTY**. I wrote and documented this for my personal use. It's what I use to create servers for development and testing. I accept no responsibility or liability whatsoever if any third party decides to use it. If something broke and you know how to fix it feel free to send me a Pull Request through GitHub.
 
