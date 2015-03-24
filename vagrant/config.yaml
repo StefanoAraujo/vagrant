@@ -102,7 +102,7 @@ vagrantfile-local:
     extrascripts:
         phpMyAdmin:
             install: 1
-            source_url: http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.3.1/phpMyAdmin-4.3.1-all-languages.tar.gz?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Fdownloads.php&ts=1418133951&use_mirror=netcologne
+            source_url: http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.3.12/phpMyAdmin-4.3.12-all-languages.zip?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Findex.php&ts=1427219267&use_mirror=softlayer-ams
         pml:
             install: 1
             source_url: https://github.com/potsky/PimpMyLog/tarball/master
