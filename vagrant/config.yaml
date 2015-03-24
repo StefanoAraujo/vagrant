@@ -145,3 +145,7 @@ vagrantfile-local:
             type: library
             source: /mnt/Projects/akeeba/fof/fof
             target: libraries/f0f
+        fof3:
+            type: library
+            source: /mnt/Projects/akeeba/fof3/fof
+            target: libraries/fof30
