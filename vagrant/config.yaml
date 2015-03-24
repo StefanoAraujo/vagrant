@@ -100,7 +100,7 @@ vagrantfile-local:
             xdebug_install: 1
             xdebug_url: http://xdebug.org/files/xdebug-2.3.2.tgz
     extrascripts:
-        phpMyAdmin:
+        phpmyadmin:
             install: 1
             source_url: http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.3.12/phpMyAdmin-4.3.12-all-languages.zip?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Findex.php&ts=1427219267&use_mirror=softlayer-ams
         pml:

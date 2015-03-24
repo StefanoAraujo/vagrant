@@ -76,7 +76,7 @@ Each Joomla! site's Super User username and password is named after the site. Fo
 
 ### phpMyAdmin
 
-If you want to manage your database server you should preferably use a tool such as Sequel Pro. Just connect with hostname vagrant.up, username root and no password. Alternatively you can use phpMyAdmin at http://vagrant54.up/phpMyAdmin
+If you want to manage your database server you should preferably use a tool such as Sequel Pro. Just connect with hostname vagrant.up, username root and no password. Alternatively you can use phpMyAdmin at http://vagrant54.up/phpmyadmin
 
 The database administrator username is `root` with an empty password. Please note that phpMyAdmin doesn't allow you to connect with an empty password. Please use one of the already created users instead.
 
@@ -126,7 +126,7 @@ Beware! This is a development environment. XDebug is configured to allow anyone 
 If you cannot access the vagrant.up, vagrant53.up etc domains you need to edit your hosts file yourself and add the following lines:
 
 ```
-192.168.64.3		phpMyAdmin.vagrant53.up phpMyAdmin.vagrant54.up phpMyAdmin.vagrant55.up phpMyAdmin.vagrant56.up
+192.168.64.3		phpmyadmin.vagrant53.up phpmyadmin.vagrant54.up phpmyadmin.vagrant55.up phpmyadmin.vagrant56.up
 192.168.64.3		pml.vagrant53.up pml.vagrant54.up pml.vagrant55.up pml.vagrant56.up
 192.168.64.3		dev3.vagrant.up test3.vagrant.up www.vagrant.up vagrant.up
 192.168.64.3		jdev.vagrant53.up dev3.vagrant53.up test3.vagrant53.up www.vagrant53.up vagrant53.up
