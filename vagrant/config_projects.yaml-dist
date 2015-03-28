@@ -1,0 +1,52 @@
+---
+projects:
+    synced_folder:
+        myProjects:
+            # Set up folder ownership
+            owner: www-data
+            group: www-data
+            # Location in host
+            source: ~/Projects
+            # Location in guest
+            target: /mnt/Projects
+            # Sync type can be default, nfs, smb or rsync
+            sync_type: default
+            # If sync_type is rsync these are the rsync options
+            rsync:
+                args:
+                    - '--verbose'
+                    - '--archive'
+                    - '-z'
+                exclude:
+                    - .vagrant/
+                auto: 'false'
+    extensions:
+        backup:
+            type: relink
+            source: /mnt/Projects/akeeba/backup
+        jadmintools:
+            type: relink
+            source: /mnt/Projects/akeeba/jadmintools
+        ats:
+            type: relink
+            source: /mnt/Projects/akeeba/ats
+        ars:
+            type: relink
+            source: /mnt/Projects/akeeba/ars
+        akeebasubs:
+            type: relink
+            source: /mnt/Projects/akeeba/akeebasubs
+        docimport:
+            type: relink
+            source: /mnt/Projects/akeeba/docimport
+        cmsupdate:
+            type: relink
+            source: /mnt/Projects/akeeba/cmsupdate
+        fof:
+            type: library
+            source: /mnt/Projects/akeeba/fof/fof
+            target: libraries/f0f
+        fof3:
+            type: library
+            source: /mnt/Projects/akeeba/fof3/fof
+            target: libraries/fof30

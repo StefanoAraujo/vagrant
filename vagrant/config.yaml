@@ -17,27 +17,6 @@ vagrantfile-local:
             private_network: 192.168.64.3
             # Forwarded ports
             forwarded_port: {  }
-        synced_folder:
-            # Each entry needs a unique key
-            myProjects:
-                # Set up folder ownership
-                owner: www-data
-                group: www-data
-                # Location in host
-                source: ~/Projects
-                # Location in guest
-                target: /mnt/Projects
-                # Sync type can be default, nfs, smb or rsync
-                sync_type: default
-                # If sync_type is rsync these are the rsync options
-                rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                    auto: 'false'
         # Memory, in Mb
         memory: '512'
         # Virtual CPUs
@@ -106,46 +85,3 @@ vagrantfile-local:
         pml:
             install: 1
             source_url: https://github.com/potsky/PimpMyLog/tarball/master
-    installsites:
-        dev3:
-            type: joomla
-            source: latest
-            linkextensions: 1
-        test3:
-            type: joomla
-            source: latest
-            linkextensions: 0
-        jdev:
-            type: joomla
-            source: /mnt/Projects/master/joomla-cms
-            linkextensions: 0
-    extensions:
-        backup:
-            type: relink
-            source: /mnt/Projects/akeeba/backup
-        jadmintools:
-            type: relink
-            source: /mnt/Projects/akeeba/jadmintools
-        ats:
-            type: relink
-            source: /mnt/Projects/akeeba/ats
-        ars:
-            type: relink
-            source: /mnt/Projects/akeeba/ars
-        akeebasubs:
-            type: relink
-            source: /mnt/Projects/akeeba/akeebasubs
-        docimport:
-            type: relink
-            source: /mnt/Projects/akeeba/docimport
-        cmsupdate:
-            type: relink
-            source: /mnt/Projects/akeeba/cmsupdate
-        fof:
-            type: library
-            source: /mnt/Projects/akeeba/fof/fof
-            target: libraries/f0f
-        fof3:
-            type: library
-            source: /mnt/Projects/akeeba/fof3/fof
-            target: libraries/fof30

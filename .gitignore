@@ -2,3 +2,5 @@
 /.idea
 
 /vagrant/downloads/*
+vagrant/config_projects.yaml
+vagrant/config_sites.yaml
