@@ -1,0 +1,14 @@
+---
+installsites:
+    dev3:
+        type: joomla
+        source: latest
+        linkextensions: ['backup', 'jadmintools', 'ats', 'ars', 'akeebasubs', 'docimport', 'cmsupdate', 'fof', 'fof3']
+    test3:
+        type: joomla
+        source: latest
+        linkextensions: []
+    jdev:
+        type: joomla
+        source: /mnt/Projects/master/joomla-cms
+        linkextensions: []

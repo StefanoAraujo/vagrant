@@ -8,6 +8,23 @@ dir = File.dirname(File.expand_path(__FILE__))
 configValues = YAML.load_file("#{dir}/vagrant/config.yaml")
 data         = configValues['vagrantfile-local']
 
+# Check if I have the required additional files
+if !File.file?("#{dir}/vagrant/config_projects.yaml")
+  print "Please rename and configure config_projects.yaml-dist to config_projects.yaml to continue\n"
+  exit
+end
+
+if !File.file?("#{dir}/vagrant/config_sites.yaml")
+  print "Please rename and configure config_sites.yaml-dist to config_sites.yaml to continue\n"
+  exit
+end
+
+rawProjects = YAML.load_file("#{dir}/vagrant/config_projects.yaml")
+projects    = rawProjects['projects']
+
+rawSites = YAML.load_file("#{dir}/vagrant/config_sites.yaml")
+sites    = rawSites['installsites']
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -88,7 +105,33 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # Set up folder shares
-    data['vm']['synced_folder'].each do |i, folder|
+    if !data['vm']['synced_folder'].nil?
+      data['vm']['synced_folder'].each do |i, folder|
+        if folder['source'] != '' && folder['target'] != ''
+          sync_owner = !folder['sync_owner'].nil? ? folder['sync_owner'] : 'www-data'
+          sync_group = !folder['sync_group'].nil? ? folder['sync_group'] : 'www-data'
+
+          if folder['sync_type'] == 'nfs'
+            devbox.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{i}", type: 'nfs'
+          elsif folder['sync_type'] == 'smb'
+            devbox.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{i}", type: 'smb'
+          elsif folder['sync_type'] == 'rsync'
+            rsync_args = !folder['rsync']['args'].nil? ? folder['rsync']['args'] : ['--verbose', '--archive', '-z']
+            rsync_auto = !folder['rsync']['auto'].nil? ? folder['rsync']['auto'] : true
+            rsync_exclude = !folder['rsync']['exclude'].nil? ? folder['rsync']['exclude'] : ['.vagrant/']
+
+            devbox.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{i}",
+              rsync__args: rsync_args, rsync__exclude: rsync_exclude, rsync__auto: rsync_auto, type: 'rsync', group: sync_group, owner: sync_owner
+          else
+            devbox.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{i}",
+              group: sync_group, owner: sync_owner, mount_options: ['dmode=775', 'fmode=764']
+          end
+        end
+      end
+    end
+
+    # Set up project folders
+    projects['synced_folder'].each do |i, folder|
       if folder['source'] != '' && folder['target'] != ''
         sync_owner = !folder['sync_owner'].nil? ? folder['sync_owner'] : 'www-data'
         sync_group = !folder['sync_group'].nil? ? folder['sync_group'] : 'www-data'
@@ -198,27 +241,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # Install all the Joomla! sites
-    data['installsites'].each do |subdomain, values|
+    sites.each do |subdomain, values|
       devbox.vm.provision 'shell' do |s|
         s.path = 'vagrant/install-site-' + values['type'] + '.sh'
         s.args = [values['source'], subdomain]
       end
 
-      if values['linkextensions'].to_i == 1
-        data['extensions'].each do |tag, extval|
-          if extval['type'] == 'relink'
-            devbox.vm.provision 'shell' do |s|
-              s.path = 'vagrant/link-joomla-extension.sh'
-              s.args = [extval['source'], subdomain, tag]
-            end
-          end
-          if extval['type'] == 'library'
-            devbox.vm.provision 'shell' do |s|
-              s.path = 'vagrant/link-joomla-library.sh'
-              s.args = [extval['source'], extval['target'], subdomain]
-            end
+      values['linkextensions'].each do |tag|
+        if projects['extensions'][tag].nil?
+          next
+        end
+
+        extval = projects['extensions'][tag]
+  
+        if extval['type'] == 'relink'
+          devbox.vm.provision 'shell' do |s|
+            s.path = 'vagrant/link-joomla-extension.sh'
+            s.args = [extval['source'], subdomain, tag]
           end
         end
+        if extval['type'] == 'library'
+          devbox.vm.provision 'shell' do |s|
+            s.path = 'vagrant/link-joomla-library.sh'
+            s.args = [extval['source'], extval['target'], subdomain]
+          end
+        end      
       end
     end
 
@@ -240,7 +287,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           end
 
           # Joomla! site's domains
-          data['installsites'].each do |subdomain, extravalues|
+          sites.each do |subdomain, extravalues|
             devbox.hostmanager.aliases.push(subdomain + '.' + values['hostname'])
           end
         end
