@@ -184,6 +184,7 @@ then
 	  --with-sqlite=shared \
 	  --enable-ipv6 \
 	  --with-mcrypt \
+	  --with-imap=/usr/lib \
 	  --with-imap-ssl 1>/dev/null 2>/dev/null \
 	&& make 1>/dev/null 2>/dev/null
 	make install 1>/dev/null 2>/dev/null
