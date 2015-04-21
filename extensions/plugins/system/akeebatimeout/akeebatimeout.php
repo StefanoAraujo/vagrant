@@ -13,6 +13,8 @@ class plgSystemAkeebatimeout extends JPlugin
 {
     public function onAfterInitialise()
     {
+        $timeout = (int)$this->params->get('timeout', 30);
 
+        set_time_limit($timeout);
     }
 }
