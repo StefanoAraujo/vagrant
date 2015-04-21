@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.3.0" type="plugin" group="system" method="upgrade">
+  <name>Akeeba Timout for Vagrant</name>
+  <author>Nicholas K. Dionysopoulos</author>
+  <authorEmail>nicholas@dionysopoulos.me</authorEmail>
+  <authorUrl>http://www.akeebabackup.com</authorUrl>
+  <copyright>Copyright (c)2015 Nicholas K. Dionysopoulos</copyright>
+  <license>GNU General Public License version 3, or later</license>
+  <creationDate>April 2015</creationDate>
+  <version>1.0</version>
+  <description>Tweaks the maximum execution time to allow remote debugging inside a Vagrant box. DO NOT USE IN PRODUCTION SITES!</description>
+
+  <files>
+    <filename plugin="akeebatimeout">akeebatimeout.php</filename>
+  </files>
+
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="timeout" type="text"
+               default="30"
+               label="Timeout"
+               filter="int"
+               description="Timeout value. Set it to 0 (zero) to remove any timeout limit"
+          />
+      </fieldset>
+    </fields>
+  </config>
+
+</extension>

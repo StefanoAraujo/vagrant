@@ -267,6 +267,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           end
         end      
       end
+
+      # Install our custom timeout system plugin (only if we installed any extension)
+      if values['linkextensions'].length > 0
+        devbox.vm.provision 'shell' do |s|
+          s.path = 'vagrant/link-joomla-library.sh'
+          s.args = ["/vagrant/extensions/plugins/system/akeebatimeout", "plugins/system/akeebatimeout", subdomain]
+        end
+      end
     end
 
     # Install Mail Catcher
