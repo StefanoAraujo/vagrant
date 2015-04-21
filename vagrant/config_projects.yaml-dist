@@ -46,6 +46,10 @@ projects:
             type: library
             source: /mnt/Projects/akeeba/fof/fof
             target: libraries/f0f
+        strapper:
+            type: library
+            source: /mnt/Projects/fof/strapper/akeeba_strapper
+            target: media/akeeba_strapper
         fof3:
             type: library
             source: /mnt/Projects/akeeba/fof3/fof
