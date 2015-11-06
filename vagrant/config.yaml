@@ -59,29 +59,29 @@ vagrantfile-local:
             xdebug_url: http://xdebug.org/files/xdebug-2.2.7.tgz
         php54:
             install: 1
-            source_url: http://de1.php.net/get/php-5.4.39.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.4.45.tar.bz2/from/this/mirror
             default: 1
             hostname: vagrant54.up
             xdebug_install: 1
-            xdebug_url: http://xdebug.org/files/xdebug-2.3.2.tgz
+            xdebug_url: http://xdebug.org/files/xdebug-2.3.3.tgz
         php55:
             install: 1
-            source_url: http://de1.php.net/get/php-5.5.23.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.5.30.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant55.up
             xdebug_install: 1
-            xdebug_url: http://xdebug.org/files/xdebug-2.3.2.tgz
+            xdebug_url: http://xdebug.org/files/xdebug-2.3.3.tgz
         php56:
             install: 1
-            source_url: http://de1.php.net/get/php-5.6.7.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.6.15.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant56.up
             xdebug_install: 1
-            xdebug_url: http://xdebug.org/files/xdebug-2.3.2.tgz
+            xdebug_url: http://xdebug.org/files/xdebug-2.3.3.tgz
     extrascripts:
         phpmyadmin:
             install: 1
-            source_url: http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.3.12/phpMyAdmin-4.3.12-all-languages.zip?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Findex.php&ts=1427219267&use_mirror=softlayer-ams
+            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.5.1/phpMyAdmin-4.5.1-english.zip
         pml:
             install: 1
             source_url: https://github.com/potsky/PimpMyLog/tarball/master
