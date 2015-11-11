@@ -237,6 +237,11 @@ class JoomlaExtensionInstallerCli extends JApplicationCli
 	{
 		return $this;
 	}
+
+	public function getCfg($name, $default = null)
+	{
+		return $this->get($name, $default);
+	}
 }
 
 $app = JApplicationCli::getInstance('JoomlaExtensionInstallerCli');
