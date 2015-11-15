@@ -41,11 +41,18 @@ You can configure the server build process by editing the `vagrant/config.yaml` 
 
 ### Configuration for most people (non Akeeba staff)
 
-Edit the `vagrant/config.yaml` file.
+Copy the `vagrant/config_projects.yaml-dist` to `vagrant/config_projects.yaml`
+
+Edit the `vagrant/config_projects.yaml` file and change the following:
 
 Things you **MUST** change:
 * `source: ~/Projects` under "myProjects". Change `~/Projects` to the path of your local computer's directory where you put your extensions' source code. This path is mounted to `/mnt/Projects` inside the virtual machine
-* `linkextensions: 1` Set to 0 if you're not Akeeba staff. Don't ask why.
+
+Copy the `vagrant/config_sites.yaml-dist` to `vagrant/config_sites.yaml`
+
+Edit the `vagrant/config_sites.yaml` file and change the following:
+
+Things you **MUST** change:
 * `source: /mnt/Projects/master/joomla-cms` Change master/joomla-cms to the relative path inside your project's directory where the Joomla! CMS working copy is. If it is the Projects directory itself, this line should read `source: /mnt/Projects`
 
 Run `vagrant up` from the main directory to build the server. WARNING: Building the server can take up to one hour since we're compiling all PHP versions from source.
