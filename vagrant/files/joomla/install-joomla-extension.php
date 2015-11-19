@@ -110,8 +110,8 @@ class JoomlaExtensionInstallerCli extends JApplicationCli
 						}
 					}
 					$query = ltrim($query);
-					$argv = explode(' ', $query);
-					$argc = count($argv);
+					$argv  = explode(' ', $query);
+					$argc  = count($argv);
 
 					$_SERVER['argv'] = $argv;
 				}
@@ -242,8 +242,26 @@ class JoomlaExtensionInstallerCli extends JApplicationCli
 	{
 		return $this->get($name, $default);
 	}
+
+	public function getClientId()
+	{
+		return 1;
+	}
+
+	public function setUserState($key, $value)
+	{
+		$session  = &JFactory::getSession();
+		$registry = &$session->get('registry');
+
+		if (!is_null($registry))
+		{
+			return $registry->setValue($key, $value);
+		}
+
+		return null;
+	}
 }
 
-$app = JApplicationCli::getInstance('JoomlaExtensionInstallerCli');
+$app                   = JApplicationCli::getInstance('JoomlaExtensionInstallerCli');
 JFactory::$application = $app;
 $app->execute();
