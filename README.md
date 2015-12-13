@@ -66,6 +66,17 @@ Things you **MUST** change:
 
 Run `vagrant up` from the main directory to build the server. WARNING: Building the server can take up to one hour since we're compiling all PHP versions from source.
 
+### Updating
+
+Every so often we update this repository with newer versions of PHP, XDebug, phpMyAdmin etc. In order to stay up to date you generally need to run `vagrant provision`. This will install new version branches of PHP as long as they have not been installed. It will NOT update existing PHP versions, e.g. it won't upgrade PHP 5.6.15 to 5.6.16.
+
+However, if you want to update already installed software you need to delete some files from the `vagrant/downloads` directory:
+* `phpXY.installed` and `phpXY.tar.bz2` (where XY is a PHP version branch, e.g. 56) to let the provisioning script overwrite a version branch of PHP with a newer version. For example, deleting `php56.installed` and `php56.tar.bz2` allows the provision script to update PHP 5.6 to the latest version defined in `config.yaml`. Please note that removing these files will recompile PHP which does take a lot of time! As a rule of thumb, delete the files for PHP 5.5, 5.6 and 7.0 (PHP 5.3 and 5.4 are EOL – they do not receive updates any more). 
+* `phpXY.xdebug.installed` to update XDebug for a specific PHP version
+* `extrascript.phpmyadmin.installed` and `phpmyadmin.tar.gz` to reinstall/update phpMyAdmin
+* `extrascript.pml.installed` and `pml.tar.gz` to reinstall/update PML (Pimp My Log)
+
+If you have defined extra scripts in your `config.yaml` you will see the respective `extrascript.KEY.installed` and `KEY.tar.gz` files where KEY is the extra script's key under the extrascripts label in your config.yaml.
 
 ## Useful information for installed software
 
