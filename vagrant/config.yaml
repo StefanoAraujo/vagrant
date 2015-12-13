@@ -73,11 +73,18 @@ vagrantfile-local:
             xdebug_url: http://xdebug.org/files/xdebug-2.3.3.tgz
         php56:
             install: 1
-            source_url: http://de1.php.net/get/php-5.6.15.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.6.16.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant56.up
             xdebug_install: 1
             xdebug_url: http://xdebug.org/files/xdebug-2.3.3.tgz
+        php70:
+            install: 1
+            source_url: http://de1.php.net/get/php-7.0.0.tar.bz2/from/this/mirror
+            default: 0
+            hostname: vagrant70.up
+            xdebug_install: 1
+            xdebug_url: http://xdebug.org/files/xdebug-2.4.0rc3.tgz
     extrascripts:
         phpmyadmin:
             install: 1

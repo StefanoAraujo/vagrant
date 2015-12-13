@@ -13,8 +13,8 @@ In other words, here's what you get when you install a server using this reposit
 * Ubuntu Server
 * MySQL
 * Apache, with automatic subdomain hosting
-* Four different PHP versions (PHP 5.3, 5.4, 5.5, 5.6), one domain per PHP version: vagrant53.up for PHP 5.3, vagrant54.up for PHP 5.4, vagrant55.up for PHP 5.5, vagrant56.up for PHP 5.6. All compiled from scratch.
-* XDebug, one port per PHP version: 9053 for PHP 5.3, 9054 for PHP 5.4, 9055 for PHP 5.5, 9056 for PHP 5.6. Compiled from scratch.
+* Different PHP versions (PHP 5.3, 5.4, 5.5, 5.6, 7.0), one domain per PHP version: vagrant53.up for PHP 5.3, vagrant54.up for PHP 5.4, vagrant55.up for PHP 5.5, vagrant56.up for PHP 5.6, vagrant70.up for PHP 7.0. All compiled from scratch.
+* XDebug, one port per PHP version: 9053 for PHP 5.3, 9054 for PHP 5.4, 9055 for PHP 5.5, 9056 for PHP 5.6, 9070 for PHP 7.0. Compiled from scratch.
 * PEAR
 * Phing
 * Composer
@@ -24,8 +24,8 @@ In other words, here's what you get when you install a server using this reposit
 * phpMyAdmin at http://phpMyAdmin.vagrant54.up
 * Pimp My Log at http://pml.vagrant54.up
 * MailCatcher at http://vagrant.up:1080
-* Two latest Joomla! 3 sites freshly installed at dev3.vagrant54.up and test3.vagrant54.up (and the respective vagrant53.up, vagrant55.up and vagrant56.up for testing with other PHP versions)
-* Optional: Joomla! CMS development site freshly installed at jdev.vagrant54.up (and the respective vagrant53.up, vagrant55.up and vagrant56.up for testing with other PHP versions) from sources you've already provided yourself – See below
+* Two latest Joomla! 3 sites freshly installed at dev3.vagrant54.up and test3.vagrant54.up (and the respective vagrant53.up, vagrant55.up etc for testing with other PHP versions)
+* Optional: Joomla! CMS development site freshly installed at jdev.vagrant54.up (and the respective vagrant53.up, vagrant55.up etc for testing with other PHP versions) from sources you've already provided yourself – See below
 * Optional: Automatic build, install and symlinking of Akeeba extensions to the dev3 site. If you're not Akeeba staff you can ignore that part.
 
 ## Pre-requisites
@@ -107,15 +107,17 @@ The PHP version used to serve your site depends on the domain name you use. We h
 * `vagrant54.up` for PHP 5.4
 * `vagrant55.up` for PHP 5.5
 * `vagrant56.up` for PHP 5.6
+* `vagrant70.up` for PHP 7.0
 
-This means that the dev3 site can be served by four different URLs:
+This means that the dev3 site can be served by these different URLs:
 
 * `http://dev3.vagrant53.up` for PHP 5.3
 * `http://dev3.vagrant54.up` for PHP 5.4
 * `http://dev3.vagrant55.up` for PHP 5.5
 * `http://dev3.vagrant56.up` for PHP 5.6
+* `http://dev3.vagrant70.up` for PHP 7.0
 
-The subdomain (leftmost part of the domain name in the URL) is the same as the /var/www subdirectory where the site's files are located in. You can create as many sites as you want, as long as you've added the necessary aliases in your computer's host file.
+The subdomain (leftmost part of the domain name in the URL) is the same as the `/var/www` subdirectory where the site's files are located in. You can create as many sites as you want, as long as you've added the necessary aliases in your computer's host file.
 
 Each PHP version also has a different XDebug port it listens to:
 
@@ -123,6 +125,7 @@ Each PHP version also has a different XDebug port it listens to:
 * 9054 for PHP 5.4 (vagrant54.up domain)
 * 9055 for PHP 5.5 (vagrant55.up domain)
 * 9056 for PHP 5.6 (vagrant56.up domain)
+* 9070 for PHP 7.0 (vagrant70.up domain)
 
 Got it? It's 90 and the PHP major and minor version. It's very simple to remember.
 
@@ -133,13 +136,14 @@ Beware! This is a development environment. XDebug is configured to allow anyone 
 If you cannot access the vagrant.up, vagrant53.up etc domains you need to edit your hosts file yourself and add the following lines:
 
 ```
-192.168.64.3		phpmyadmin.vagrant53.up phpmyadmin.vagrant54.up phpmyadmin.vagrant55.up phpmyadmin.vagrant56.up
-192.168.64.3		pml.vagrant53.up pml.vagrant54.up pml.vagrant55.up pml.vagrant56.up
+192.168.64.3		phpmyadmin.vagrant53.up phpmyadmin.vagrant54.up phpmyadmin.vagrant55.up phpmyadmin.vagrant56.up phpmyadmin.vagrant70.up
+192.168.64.3		pml.vagrant53.up pml.vagrant54.up pml.vagrant55.up pml.vagrant56.up pml.vagrant70.up
 192.168.64.3		dev3.vagrant.up test3.vagrant.up www.vagrant.up vagrant.up
 192.168.64.3		jdev.vagrant53.up dev3.vagrant53.up test3.vagrant53.up www.vagrant53.up vagrant53.up
 192.168.64.3		jdev.vagrant54.up dev3.vagrant54.up test3.vagrant54.up www.vagrant54.up vagrant54.up
 192.168.64.3		jdev.vagrant55.up dev3.vagrant55.up test3.vagrant55.up www.vagrant55.up vagrant55.up
 192.168.64.3		jdev.vagrant56.up dev3.vagrant56.up test3.vagrant56.up www.vagrant56.up vagrant56.up
+192.168.64.3		jdev.vagrant70.up dev3.vagrant70.up test3.vagrant70.up www.vagrant70.up vagrant70.up
 ```
 
 How to do that depends on your operating system:
