@@ -88,7 +88,7 @@ vagrantfile-local:
     extrascripts:
         phpmyadmin:
             install: 1
-            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.5.1/phpMyAdmin-4.5.1-english.zip
+            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.5.1/phpMyAdmin-4.5.1-english.tar.gz
         pml:
             install: 1
             source_url: https://github.com/potsky/PimpMyLog/tarball/master
