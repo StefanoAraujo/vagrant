@@ -21,7 +21,7 @@ In other words, here's what you get when you install a server using this reposit
 * PHPUnit
 * PHP Code Sniffer (phpcs)
 * PHP Mess Detector (phpmd)
-* phpMyAdmin at http://phpMyAdmin.vagrant54.up
+* phpMyAdmin at http://phpMyAdmin.vagrant55.up (note: newer versions of phpMyAdmin do not work with PHP 5.3 and 5.4)
 * Pimp My Log at http://pml.vagrant54.up
 * MailCatcher at http://vagrant.up:1080
 * Two latest Joomla! 3 sites freshly installed at dev3.vagrant54.up and test3.vagrant54.up (and the respective vagrant53.up, vagrant55.up etc for testing with other PHP versions)
