@@ -39,13 +39,6 @@ projects:
         docimport:
             type: relink
             source: /mnt/Projects/akeeba/docimport
-        cmsupdate:
-            type: relink
-            source: /mnt/Projects/akeeba/cmsupdate
-        fof:
-            type: library
-            source: /mnt/Projects/akeeba/fof/fof
-            target: libraries/f0f
         fof3:
             type: library
             source: /mnt/Projects/akeeba/fof3/fof

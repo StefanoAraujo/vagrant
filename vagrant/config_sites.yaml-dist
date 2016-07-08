@@ -3,7 +3,7 @@ installsites:
     dev3:
         type: joomla
         source: latest
-        linkextensions: ['backup', 'jadmintools', 'ats', 'ars', 'akeebasubs', 'docimport', 'cmsupdate', 'fof', 'fof3']
+        linkextensions: ['backup', 'jadmintools', 'ats', 'ars', 'akeebasubs', 'docimport', 'fof3']
     test3:
         type: joomla
         source: latest
