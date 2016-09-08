@@ -63,32 +63,39 @@ vagrantfile-local:
             default: 0
             hostname: vagrant54.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.0.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
         php55:
             install: 1
             source_url: http://de1.php.net/get/php-5.5.37.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant55.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.0.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
         php56:
             install: 1
-            source_url: http://de1.php.net/get/php-5.6.23.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.6.25.tar.bz2/from/this/mirror
             default: 1
             hostname: vagrant56.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.0.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
         php70:
             install: 1
-            source_url: http://de1.php.net/get/php-7.0.8.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-7.0.10.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant70.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.0.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
+        php71:
+            install: 1
+            source_url: https://downloads.php.net/~davey/php-7.1.0RC1.tar.bz2
+            default: 0
+            hostname: vagrant71.up
+            xdebug_install: 1
+            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
     extrascripts:
         phpmyadmin:
             install: 1
-            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-english.tar.gz
+            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-english.tar.gz
         pml:
             install: 1
             source_url: https://github.com/potsky/PimpMyLog/tarball/master
