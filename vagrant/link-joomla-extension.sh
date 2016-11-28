@@ -12,6 +12,8 @@ SOURCE_DIR=$1
 TARGET=/var/www/$2
 FLAG_FILE="/vagrant/vagrant/downloads/extension.$2.$3.installed"
 
+export PATH=$PATH:/home/vagrant/.composer/vendor/bin
+
 if [ ! -f "$FLAG_FILE" ]
 then
 	# Go into the extension directory and perform initial linking

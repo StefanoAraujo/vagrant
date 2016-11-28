@@ -29,7 +29,7 @@ echo 'Finished installing build-essential packages'
 
 echo "Installing base packages"
 apt-get install --assume-yes apache2 mysql-client mysql-server supervisor \
-	vim ntp bzip2 libpcre3-dev vim libapache2-mod-fcgid expect
+	vim ntp bzip2 libpcre3-dev vim libapache2-mod-fcgid expect unzip
 echo 'Finished installing base packages'
 
 echo "Installing PHP build dependencies"
@@ -80,11 +80,10 @@ a2enmod rewrite 1>/dev/null 2>/dev/null
 a2enmod vhost_alias 1>/dev/null 2>/dev/null
 a2enmod fcgid 1>/dev/null 2>/dev/null
 
-# Prepare for PEAR installation
-echo "Preparation for PEAR installation"
-GOPEAR=/vagrant/vagrant/downloads/go-pear.php
-if [[ ! -f "$GOPEAR" ]]
+## Symlink the Composer bin to the user's private bin
+if [[ -h /home/vagrant/bin ]]
 then
-	curl -L "http://pear.php.net/go-pear.phar" -o "$GOPEAR" 1>/dev/null 2>/dev/null
+    rm /home/vagrant/bin
 fi
-mkdir -p /usr/share/pear
+
+ln -s /home/vagrant/.composer/vendor/bin /home/vagrant/bin

@@ -224,9 +224,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
     end
 
-    # Install PEAR. This is a separate script as it uses GNU expect to run the installation
-    devbox.vm.provision :shell, :path => "vagrant/install-pear.sh"
-
     # Install Composer, phpUnit, Phing, PHP CodeSniffer, PHP Mess Detector
     devbox.vm.provision :shell, :path => "vagrant/install-composer-and-friends.sh"
 

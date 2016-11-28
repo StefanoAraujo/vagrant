@@ -5,28 +5,31 @@ cd /tmp
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
-# Install PHPUnit
-cd /tmp
-curl -sS https://phar.phpunit.de/phpunit.phar -O
-chmod a+x phpunit.phar
-sudo mv phpunit.phar /usr/local/bin/phpunit
+# Install Phing and its dependencies
+sudo -H -u vagrant composer global config minimum-stability stable
+sudo -H -u vagrant composer global require phing/phing
+sudo -H -u vagrant composer global require phpdocumentor/phpdocumentor
+sudo -H -u vagrant composer global require sebastian/phpcpd
+sudo -H -u vagrant composer global require pdepend/pdepend
+sudo -H -u vagrant composer global require phploc/phploc
+sudo -H -u vagrant composer global require pear/versioncontrol_svn
+sudo -H -u vagrant composer global require pear/archive_tar
+sudo -H -u vagrant composer global require tedivm/jshrink
 
-# Install Phing
-pear config-set preferred_state alpha
-pear config-set auto_discover 1
-pear channel-discover pear.phing.info
-pear install --alldeps phing/phing
-pear config-set auto_discover 0
-pear config-set preferred_state stable
+# The pear/git package is unstable, so let's let usntable packages to be installed temporarily
+sudo -H -u vagrant composer global config minimum-stability dev
+sudo -H -u vagrant composer global require pear/versioncontrol_git
+sudo -H -u vagrant composer global config minimum-stability beta
+
+# Install PHPUnit and its dependencies
+sudo -H -u vagrant composer global require phpunit/phpunit
+# -- this requires the pcntl extension which is currently not installed
+#sudo -H -u vagrant composer global require phpunit/php-invoker
+sudo -H -u vagrant composer global require phpunit/php-code-coverage
+
 
 # Install PHP CodeSniffer
-cd /tmp
-curl -OSsL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-curl -OSsL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
-chmod a+x phpcs.phar
-mv phpcs.phar /usr/local/bin/phpcs
-chmod a+x phpcbf.phar
-mv phpcbf.phar /usr/local/bin/phpcbf
+sudo -H -u vagrant composer global require squizlabs/php_codesniffer
 
 # Install PHP Mess Detector
-sudo -H -u vagrant composer global require phpmd/phpmd:@stable
+sudo -H -u vagrant composer global require phpmd/phpmd
