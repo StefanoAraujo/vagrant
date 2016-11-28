@@ -18,7 +18,6 @@ if [ ! -f "$FLAG_FILE" ]
 then
 	# Go into the extension directory and perform initial linking
 	cd "$SOURCE_DIR"
-	php /mnt/Projects/akeeba/buildfiles/tools/link.php "$SOURCE_DIR"
 	# Go into the build directory and build the extension
 	rm -f "$SOURCE_DIR/release"/*
 	cd "$SOURCE_DIR/build"
