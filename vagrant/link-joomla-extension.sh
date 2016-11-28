@@ -22,8 +22,8 @@ then
 	# Go into the build directory and build the extension
 	rm -f "$SOURCE_DIR/release"/*
 	cd "$SOURCE_DIR/build"
-	phing link
 	phing git
+
 	PACKAGE_FILE=`ls "$SOURCE_DIR/release" -1 | grep "com_.*pro.zip"`
 	if [ -z "$PACKAGE_FILE" ]
 	then
