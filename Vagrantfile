@@ -191,7 +191,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # vb.gui = true
 
       # Use VBoxManage to customize the VM. For example to change memory:
-      vb.customize ["modifyvm", :id, "--memory", "512"]
+      # vb.customize ["modifyvm", :id, "--memory", "512"]
+
+      # 1Gb maximum RAM
+      vb.memory=1024
+      # Up to 2 CPUs
+      vb.cpus=2
+      # Up to 100% utilization of both CPUs
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "100"]
+      # The rest are virtualization optimizations (they may not be supported by older CPUs)
+      vb.customize ["modifyvm", :id, "--pagefusion", "on"]
+      vb.customize ["modifyvm", :id, "--acpi", "on"]
+      vb.customize ["modifyvm", :id, "--ioapic", "on"]
+      vb.customize ["modifyvm", :id, "--pae", "on"]
+      vb.customize ["modifyvm", :id, "--hpet", "on"]
+      vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
+      vb.customize ["modifyvm", :id, "--x2apic", "on"]
+      vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
+      vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
+      vb.customize ["modifyvm", :id, "--vtxux", "on"]
     end
 
     # Enable the Vagrant Cachier plugin if it's installed
