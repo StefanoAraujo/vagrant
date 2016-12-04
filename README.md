@@ -142,7 +142,7 @@ Got it? It's 90 and the PHP major and minor version. It's very simple to remembe
 
 Beware! This is a development environment. XDebug is configured to allow anyone to connect to it, no matter what their IP address is.
 
-### What to do if the hosts update doesn't work out of the box
+### Setting up the domain names for the Vagrant box on yoru computer
 
 If you cannot access the vagrant.up, vagrant53.up etc domains you need to edit your hosts file yourself and add the following lines:
 
@@ -164,3 +164,11 @@ How to do that depends on your operating system:
 * Windows: Use [HostsEditor](https://hostseditor.codeplex.com)
 
 Further information on editing your hosts file can be found on [HowToGeek](http://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/).
+
+#### Caveats
+
+If you are on a Windows host and getting pathetic performance add the following line to the VM's `/etc/hosts` file:
+```
+192.168.64.1    vm.host.web
+```
+It seems that PHP is trying to do reverse DNS lookup on the REMOTE_ADDR address reported by Apache. We haven't found why, or why it only seems to adversely affect Windows hosts, yet.
