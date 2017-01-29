@@ -66,36 +66,36 @@ vagrantfile-local:
             xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
         php55:
             install: 1
-            source_url: http://de1.php.net/get/php-5.5.37.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.5.38.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant55.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.0.tgz
         php56:
             install: 1
-            source_url: http://de1.php.net/get/php-5.6.26.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-5.6.30.tar.bz2/from/this/mirror
             default: 1
             hostname: vagrant56.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.0.tgz
         php70:
             install: 1
-            source_url: http://de1.php.net/get/php-7.0.12.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-7.0.15.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant70.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.0.tgz
         php71:
             install: 1
-            source_url: https://downloads.php.net/~davey/php-7.1.0RC3.tar.bz2
+            source_url: http://de1.php.net/get/php-7.1.1.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant71.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.4.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.0.tgz
     extrascripts:
         phpmyadmin:
             install: 1
-            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-english.tar.gz
+            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.6.6/phpMyAdmin-4.6.6-english.tar.gz
         pml:
             install: 1
             source_url: https://github.com/potsky/PimpMyLog/tarball/master
