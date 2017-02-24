@@ -200,13 +200,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # Up to 100% utilization of both CPUs
       vb.customize ["modifyvm", :id, "--cpuexecutioncap", "100"]
       # The rest are virtualization optimizations (they may not be supported by older CPUs)
-      vb.customize ["modifyvm", :id, "--pagefusion", "on"]
+      # vb.customize ["modifyvm", :id, "--pagefusion", "on"]
       vb.customize ["modifyvm", :id, "--acpi", "on"]
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
       vb.customize ["modifyvm", :id, "--pae", "on"]
       vb.customize ["modifyvm", :id, "--hpet", "on"]
       vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
-      vb.customize ["modifyvm", :id, "--x2apic", "on"]
+      # vb.customize ["modifyvm", :id, "--x2apic", "on"]
       vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
       vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
       vb.customize ["modifyvm", :id, "--vtxux", "on"]
