@@ -34,6 +34,7 @@ In other words, here's what you get when you install a server using this reposit
 * [Vagrant](https://www.vagrantup.com) 1.5 or later (built on 1.6)
 * [Vagrant Cachier plugin](https://github.com/fgrehm/vagrant-cachier). Install with `vagrant plugin install vagrant-cachier`. Used to cache the Ubuntu packages used to build the Virtual Machines.
 * [Vagrant HostManager plugin](https://github.com/smdahlen/vagrant-hostmanager). Install with `vagrant plugin install vagrant-hostmanager`. Used to modify your hosts file to let you access your Virtual Machine.
+* [Vagrant vbguest plugin](https://github.com/dotless-de/vagrant-vbguest) Install with `vagrant plugin install vagrant-vbguest`. Just for your convenience. Keeps the VirtualBox Guest Additions in sync with your current VirtualBox version.
 
 ## Setup
 
