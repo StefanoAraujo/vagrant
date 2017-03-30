@@ -255,7 +255,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
     end
 
-    # Install all the Joomla! sites
+    # Install all the sites
     sites.each do |subdomain, values|
       devbox.vm.provision 'shell' do |s|
         s.path = 'vagrant/install-site-' + values['type'] + '.sh'
@@ -271,7 +271,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
         if extval['type'] == 'relink'
           devbox.vm.provision 'shell' do |s|
-            s.path = 'vagrant/link-joomla-extension.sh'
+            s.path = 'vagrant/link-' + values['type'] + '-extension.sh'
             s.args = [extval['source'], subdomain, tag]
           end
         end
