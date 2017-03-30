@@ -268,19 +268,37 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
 
         extval = projects['extensions'][tag]
-  
-        if extval['type'] == 'relink'
-          devbox.vm.provision 'shell' do |s|
-            s.path = 'vagrant/link-' + values['type'] + '-extension.sh'
-            s.args = [extval['source'], subdomain, tag]
-          end
+        
+        # Under WordPress we need a different construct
+        if values['type'] == 'wordpress'
+        	if extval['type'] == 'relink'
+		      devbox.vm.provision 'shell' do |s|
+		        s.path = 'vagrant/link-wordpress-extension.sh'
+		        s.args = [extval['source'], subdomain, tag]
+		      end
+		      
+		      # After installing it, create the symbolic link
+		      devbox.vm.provision 'shell' do |s|
+		        s.inline = 'ln -sf $1 $2'
+		        s.args = [extval['source'] + '/' + extval['source_dir'], '/var/www/' + subdomain + '/' + extval['target']]
+		      end
+		    end
+        else
+		    if extval['type'] == 'relink'
+		      devbox.vm.provision 'shell' do |s|
+		        s.path = 'vagrant/link-joomla-extension.sh'
+		        s.args = [extval['source'], subdomain, tag]
+		      end
+		    end
+		    
+		    if extval['type'] == 'library'
+		      devbox.vm.provision 'shell' do |s|
+		        s.path = 'vagrant/link-joomla-library.sh'
+		        s.args = [extval['source'], extval['target'], subdomain]
+		      end
+		    end
         end
-        if extval['type'] == 'library'
-          devbox.vm.provision 'shell' do |s|
-            s.path = 'vagrant/link-joomla-library.sh'
-            s.args = [extval['source'], extval['target'], subdomain]
-          end
-        end      
+              
       end
     end
 

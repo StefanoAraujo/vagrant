@@ -38,11 +38,9 @@ then
 	pushd "$TARGET" >/dev/null
 	php /vagrant/vagrant/downloads/wp-cli.phar plugin install "$SOURCE_DIR/release/$PACKAGE_FILE" --activate
 	popd >/dev/null
+	
+	chown -R www-data:www-data $TARGET
 
 	# Touch the flag file
 	touch "$FLAG_FILE"
 fi
-
-# Finally, symlink the extension
-cd "$SOURCE_DIR/build"
-phing relink -Dsite="$TARGET"
