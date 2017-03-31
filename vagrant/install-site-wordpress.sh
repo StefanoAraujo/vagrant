@@ -52,7 +52,7 @@ echo "Creating database $2"
 sed -e "s/MYDBNAME/$2/g" /vagrant/vagrant/files/wordpress/install_wordpress_create_db.sql | mysql -h "$DB_HOST" -u "$DB_USER" --password="$DB_PASS"
 
 # Download wp-cli to easily configure WordPress sites
-if [ -z "/vagrant/vagrant/downloads/wp-cli.phar" ]; then
+if [ ! -f "/vagrant/vagrant/downloads/wp-cli.phar" ]; then
 	echo "Downloading wp-cli tool"
 	curl -s https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /vagrant/vagrant/downloads/wp-cli.phar
 fi

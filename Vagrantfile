@@ -279,7 +279,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		      
 		      # After installing it, create the symbolic link
 		      devbox.vm.provision 'shell' do |s|
-		        s.inline = 'ln -sf $1 $2'
+		        s.inline = 'ln -snf $1 $2'
 		        s.args = [extval['source'] + '/' + extval['source_dir'], '/var/www/' + subdomain + '/' + extval['target']]
 		      end
 		    end

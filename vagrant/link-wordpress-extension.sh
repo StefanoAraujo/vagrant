@@ -17,7 +17,7 @@ export PATH=$PATH:/home/vagrant/.composer/vendor/bin
 if [ ! -f "$FLAG_FILE" ]
 then
 	# Download wp-cli to easily configure WordPress sites
-	if [ -z "/vagrant/vagrant/downloads/wp-cli.phar" ]; then
+	if [ ! -f "/vagrant/vagrant/downloads/wp-cli.phar" ]; then
 		echo "Downloading wp-cli tool"
 		curl -s https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /vagrant/vagrant/downloads/wp-cli.phar
 	fi
