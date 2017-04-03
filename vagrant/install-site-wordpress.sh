@@ -69,6 +69,12 @@ php /vagrant/vagrant/downloads/wp-cli.phar core config --dbname=$2 --dbuser=$DB_
 echo "Installing WordPress..."
 php /vagrant/vagrant/downloads/wp-cli.phar core install --title=WordPress --admin_user=$2 --admin_email=$2@localhost.localdomain --admin_password=$2 --skip-email --url=$2.vagrant.up --path=$TARGET_DIR
 
+# Copy wp-cli configuration file
+if [ ! -f "$TARGET_DIR/.htaccess" ]
+then
+	sed -e "s/SITENAME/$2/g" /vagrant/vagrant/files/wordpress/htaccess.txt > "$TARGET_DIR/.htaccess"
+fi
+
 echo "Fixing ownership"
 chown -Rf www-data:www-data "$TARGET_DIR"
 

@@ -38,7 +38,7 @@ then
 		PACKAGE_FILE=`ls "$SOURCE_DIR/release" -1 | egrep ".*wp.*.zip"`
 	fi
 	
-	pushd "$TARGET" >/dev/null
+	pushd "$TARGET" >/dev/null	
 	php /vagrant/vagrant/downloads/wp-cli.phar plugin install "$SOURCE_DIR/release/$PACKAGE_FILE" --activate
 	popd >/dev/null
 	

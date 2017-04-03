@@ -1,0 +1,17 @@
+# Required to force PHP 5.4 on WordPress, regardless from the current domain
+# Change it at your wish
+<Files ~ "\.php$>"
+  FcgidWrapper "/usr/bin/php54/php-cgi" .php
+</Files>
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /SUBDOMAIN
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /SUBDOMAIN/index.php [L]
+</IfModule>
+
+# END WordPress
