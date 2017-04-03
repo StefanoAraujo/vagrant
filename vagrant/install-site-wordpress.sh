@@ -67,7 +67,10 @@ php /vagrant/vagrant/downloads/wp-cli.phar core config --dbname=$2 --dbuser=$DB_
 
 # Ok now, we're ready to actually install WordPress
 echo "Installing WordPress..."
-php /vagrant/vagrant/downloads/wp-cli.phar core install --title=WordPress --admin_user=$2 --admin_email=$2@localhost.localdomain --admin_password=$2 --skip-email --url=$2.vagrant54.up --path=$TARGET_DIR
+php /vagrant/vagrant/downloads/wp-cli.phar core install --title=WordPress --admin_user=$2 --admin_email=$2@localhost.localdomain --admin_password=$2 --skip-email --url=$2.vagrant.up --path=$TARGET_DIR
 
 echo "Fixing ownership"
 chown -Rf www-data:www-data "$TARGET_DIR"
+
+#echo "Set PHP version to 5.4"
+#printf '<Files ~ "\.php$>"\nFcgidWrapper "/usr/bin/php53/php-cgi" .php\n</Files>' >> "$TARGET_DIR/.htaccess"

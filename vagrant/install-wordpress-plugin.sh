@@ -4,7 +4,7 @@
 if [ "$#" -ne 3 ]
 then
 	echo "Invalid number of parameters. Usage:"
-	echo "  link-wordpress-extension.sh source_dir subdomain tag"
+	echo "  install-wordpress-plugin.sh source_dir subdomain tag"
 	exit 255
 fi
 
@@ -23,11 +23,14 @@ then
 	fi
 
 	# Go into the extension directory and perform initial linking
-	cd "$SOURCE_DIR"
+	pushd "$SOURCE_DIR" > /dev/null
 	# Go into the build directory and build the extension
 	rm -f "$SOURCE_DIR/release"/*
-	cd "$SOURCE_DIR/build"
+	popd > /dev/null
+	
+	pushd "$SOURCE_DIR/build" > /dev/null
 	phing git
+	popd > /dev/null
 
 	PACKAGE_FILE=`ls "$SOURCE_DIR/release" -1 | egrep ".*wp.*-pro.zip"`
 	if [ -z "$PACKAGE_FILE" ]
@@ -39,6 +42,7 @@ then
 	php /vagrant/vagrant/downloads/wp-cli.phar plugin install "$SOURCE_DIR/release/$PACKAGE_FILE" --activate
 	popd >/dev/null
 	
+	echo `pwd`
 	chown -R www-data:www-data $TARGET
 
 	# Touch the flag file

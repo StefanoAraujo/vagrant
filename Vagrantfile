@@ -273,14 +273,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         if values['type'] == 'wordpress'
         	if extval['type'] == 'relink'
 		      devbox.vm.provision 'shell' do |s|
-		        s.path = 'vagrant/link-wordpress-extension.sh'
+		        s.path = 'vagrant/install-wordpress-plugin.sh'
 		        s.args = [extval['source'], subdomain, tag]
 		      end
 		      
 		      # After installing it, create the symbolic link
 		      devbox.vm.provision 'shell' do |s|
-		        s.inline = 'ln -snf $1 $2'
-		        s.args = [extval['source'] + '/' + extval['source_dir'], '/var/www/' + subdomain + '/' + extval['target']]
+		        s.path = 'vagrant/link-wordpress-plugin.sh'
+		        s.args = [extval['source'] + '/' + extval['source_dir'], subdomain + '/' + extval['target']]
 		      end
 		    end
         else
