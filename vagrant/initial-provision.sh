@@ -79,6 +79,7 @@ echo "Enabling Apache modules"
 a2enmod rewrite 1>/dev/null 2>/dev/null
 a2enmod vhost_alias 1>/dev/null 2>/dev/null
 a2enmod fcgid 1>/dev/null 2>/dev/null
+a2enmod ssl 1>/dev/null 2>/dev/null
 
 ## Symlink the Composer bin to the user's private bin
 if [[ -h /home/vagrant/bin ]]
@@ -87,3 +88,6 @@ then
 fi
 
 ln -s /home/vagrant/.composer/vendor/bin /home/vagrant/bin
+
+### Run the SSL initial provisioning
+bash /vagrant/vagrant/initial-openssl.sh
