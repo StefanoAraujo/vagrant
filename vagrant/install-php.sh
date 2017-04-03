@@ -214,6 +214,10 @@ then
 	# Create the default PHP configuration using the default PHP version
 	sed -e "s/PHPVER/$2/g" /vagrant/vagrant/files/apache2/fcgid-template.conf > /etc/apache2/conf-available/php-fcgid.conf
 	a2enconf php-fcgid
+	# Create a default site at vagrant.up
+	sed -e "s/PHPVER/$2/g" -e "s/PHPDOMAIN/vagrant.up/g" \
+/vagrant/vagrant/files/apache2/phphost-template.conf > /etc/apache2/sites-available/php-default.conf
+    a2ensite php-default
 	# Also create a phpinfo.php file to let you check if PHP is working
 	echo "<?php
 phpinfo();
