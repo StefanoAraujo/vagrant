@@ -23,23 +23,22 @@ openssl genrsa -aes256 \
       -out intermediate/private/$CERTHOSTNAME.key.pem 2048
 chmod 400 intermediate/private/$CERTHOSTNAME.key.pem
 
+SAN="DNS:$CERTHOSTNAME,DNS:*.$CERTHOSTNAME"
+
 openssl req -config intermediate/openssl.cnf \
       -key intermediate/private/$CERTHOSTNAME.key.pem \
+      -extensions san_env \
       -passin pass:$CERTIFICATE_PASSWORD \
       -subj "/CN=*.$CERTHOSTNAME/O=Akeeba Ltd./OU=Production Department/C=CY/ST=Nicosia/L=Egkomi" \
-      -new -sha256 -out intermediate/csr/www.example.com.csr.pem
+      -new -sha256 -out intermediate/csr/$CERTHOSTNAME.csr.pem
 
 openssl ca -config intermediate/openssl.cnf -batch \
-      -extensions server_cert -days 1835 -notext -md sha256 \
-      -in intermediate/csr/www.example.com.csr.pem \
+      -extensions server_cert -extensions san_env \
+      -days 1835 -notext -md sha256 \
+      -in intermediate/csr/$CERTHOSTNAME.csr.pem \
       -passin pass:$CERTIFICATE_PASSWORD \
       -out intermediate/certs/$CERTHOSTNAME.cert.pem
 chmod 444 intermediate/certs/$CERTHOSTNAME.cert.pem
-
-# You need to make the following files available to the server:
-# /root/ca/intermediate/certs/ca-chain.cert.pem
-# /root/ca/intermediate/private/www.example.com.key.pem
-# /root/ca/intermediate/certs/www.example.com.cert.pem
 
 if [[ ! -d /etc/apache2/ssl ]]
 then
