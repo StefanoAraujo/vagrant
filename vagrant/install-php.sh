@@ -213,7 +213,7 @@ if [ $3 -eq 1 ]
 then
     # Create the default SSL certificate
     push /vagrant/vagrant
-    sh openssl-site-keys.sh vagrant.up
+    bash openssl-site-keys.sh vagrant.up
     popd
 	# Create the default PHP configuration using the default PHP version
 	sed -e "s/PHPVER/$2/g" /vagrant/vagrant/files/apache2/fcgid-template.conf > /etc/apache2/conf-available/php-fcgid.conf
@@ -230,7 +230,7 @@ fi
 
 # Create the SSL certificate
 push /vagrant/vagrant
-sh openssl-site-keys.sh $4
+bash openssl-site-keys.sh $4
 popd
 
 # Create a virtual host domain for the PHP version

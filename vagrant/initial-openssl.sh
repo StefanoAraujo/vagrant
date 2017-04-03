@@ -11,6 +11,8 @@ CERTIFICATE_PASSWORD=vagrant
 ## Initial provisioning of root CA directory structure
 ########################################################################################################################
 
+export SAN="DNS:vagrant.up,DNS:*.vagrant.up"
+
 if [ ! -d "/root/ca" ]
 then
     mkdir /root/ca
@@ -117,23 +119,3 @@ chmod 0644 /var/www/intermediate.crl.pem
 ########################################################################################################################
 ## Done!
 ########################################################################################################################
-
-return
-
-## The rest of this script is NOT executed by design. It's meant as an example of what you can do.
-
-########################################################################################################################
-## Example: revoking a certificate
-########################################################################################################################
-cd /root/ca
-# Revoke the certificate
-openssl ca -config intermediate/openssl.cnf \
-      -passin pass:$CERTIFICATE_PASSWORD \
-      -revoke intermediate/certs/www.example.com.cert.pem
-# Regenerate the CRL
-openssl ca -config intermediate/openssl.cnf \
-      -passin pass:$CERTIFICATE_PASSWORD \
-      -gencrl -out intermediate/crl/intermediate.crl.pem
-# Publish the CRL
-cp /root/ca/intermediate/crl/intermediate.crl.pem /var/www/intermediate.crl.pem
-chmod 0644 /var/www/intermediate.crl.pem

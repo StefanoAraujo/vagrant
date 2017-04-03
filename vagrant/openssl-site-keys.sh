@@ -23,7 +23,7 @@ openssl genrsa -aes256 \
       -out intermediate/private/$CERTHOSTNAME.key.pem 2048
 chmod 400 intermediate/private/$CERTHOSTNAME.key.pem
 
-SAN="DNS:$CERTHOSTNAME,DNS:*.$CERTHOSTNAME"
+export SAN="DNS:$CERTHOSTNAME,DNS:*.$CERTHOSTNAME"
 
 openssl req -config intermediate/openssl.cnf \
       -key intermediate/private/$CERTHOSTNAME.key.pem \
@@ -49,6 +49,6 @@ fi
 cp /root/ca/intermediate/certs/ca-chain.cert.pem /etc/apache2/ssl/ca-chain.crt
 openssl rsa -in /root/ca/intermediate/private/$CERTHOSTNAME.key.pem \
     -out /etc/apache2/ssl/$CERTHOSTNAME.key \
-    -passin pass:$CERTIFICATE_PASSWORD \
+    -passin pass:$CERTIFICATE_PASSWORD
 cp /root/ca/intermediate/certs/$CERTHOSTNAME.cert.pem /etc/apache2/ssl/$CERTHOSTNAME.crt
 chmod 0644 /etc/apache2/ssl/*

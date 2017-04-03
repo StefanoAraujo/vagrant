@@ -88,3 +88,6 @@ then
 fi
 
 ln -s /home/vagrant/.composer/vendor/bin /home/vagrant/bin
+
+### Run the SSL initial provisioning
+bash /vagrant/vagrant/initial-openssl.sh
