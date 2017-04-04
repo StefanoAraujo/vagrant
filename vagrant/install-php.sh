@@ -212,7 +212,7 @@ fi
 if [ $3 -eq 1 ]
 then
     # Create the default SSL certificate
-    push /vagrant/vagrant
+    pushd /vagrant/vagrant
     bash openssl-site-keys.sh vagrant.up
     popd
 	# Create the default PHP configuration using the default PHP version
@@ -229,7 +229,7 @@ phpinfo();
 fi
 
 # Create the SSL certificate
-push /vagrant/vagrant
+pushd /vagrant/vagrant
 bash openssl-site-keys.sh $4
 popd
 
