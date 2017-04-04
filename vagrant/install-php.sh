@@ -240,3 +240,4 @@ a2ensite $2
 
 # Create a custom PHP version FastCGI wrapper
 sed -e "s/PHPVER/$2/g" /vagrant/vagrant/files/php/wrapper.fcgi > /usr/bin/$2/$2-wrapper.fcgi
+chmod 0755 /usr/bin/$2/$2-wrapper.fcgi
