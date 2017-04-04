@@ -237,3 +237,6 @@ popd
 sed -e "s/PHPVER/$2/g" -e "s/PHPDOMAIN/$4/g" \
 /vagrant/vagrant/files/apache2/phphost-template.conf > /etc/apache2/sites-available/$2.conf
 a2ensite $2
+
+# Create a custom PHP version FastCGI wrapper
+sed -e "s/PHPVER/$2/g" /vagrant/vagrant/files/php/wrapper.fcgi > /usr/bin/$2/$2-wrapper.fcgi
