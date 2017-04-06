@@ -19,7 +19,7 @@ CERTHOSTNAME=$1
 cd /root/ca
 
 # Make a key file if one doesn't already exist
-if [[ -f "intermediate/private/$CERTHOSTNAME.key.pem" ]]
+if [[ ! -f "intermediate/private/$CERTHOSTNAME.key.pem" ]]
 then
     openssl genrsa -aes256 \
           -passout pass:$CERTIFICATE_PASSWORD \
@@ -29,7 +29,7 @@ fi
 
 
 # Make a CSR if one doesn't already exist
-if [[ -f "intermediate/private/$CERTHOSTNAME.csr.pem" ]]
+if [[ ! -f "intermediate/private/$CERTHOSTNAME.csr.pem" ]]
 then
     export SAN="DNS:$CERTHOSTNAME,DNS:*.$CERTHOSTNAME"
 
@@ -43,7 +43,7 @@ then
 fi
 
 # Sign a certificate if one doesn't already exist
-if [[ -f "intermediate/certs/$CERTHOSTNAME.cert.pem" ]]
+if [[ ! -f "intermediate/certs/$CERTHOSTNAME.cert.pem" ]]
 then
     export SAN="DNS:$CERTHOSTNAME,DNS:*.$CERTHOSTNAME"
 
