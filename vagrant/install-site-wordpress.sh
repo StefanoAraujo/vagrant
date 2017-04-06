@@ -78,5 +78,3 @@ fi
 echo "Fixing ownership"
 chown -Rf www-data:www-data "$TARGET_DIR"
 
-#echo "Set PHP version to 5.4"
-#printf '<Files ~ "\.php$>"\nFcgidWrapper "/usr/bin/php53/php-cgi" .php\n</Files>' >> "$TARGET_DIR/.htaccess"
