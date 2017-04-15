@@ -43,3 +43,8 @@ projects:
             type: library
             source: /mnt/Projects/akeeba/fof3/fof
             target: libraries/fof30
+        solo:
+            type: relink
+            source: /mnt/Projects/akeeba/solo
+            source_dir: wp/akeebabackupwp
+            target: wp-content/plugins/akeebabackupwp

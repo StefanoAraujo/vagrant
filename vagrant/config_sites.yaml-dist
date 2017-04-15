@@ -12,3 +12,7 @@ installsites:
         type: joomla
         source: /mnt/Projects/master/joomla-cms
         linkextensions: []
+    wp:
+        type: wordpress
+        source: latest
+        linkextensions: ['solo']
