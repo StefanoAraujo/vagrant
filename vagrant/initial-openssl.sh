@@ -115,7 +115,7 @@ openssl ca -config intermediate/openssl.cnf \
 cp /root/ca/intermediate/crl/intermediate.crl.pem /var/www/intermediate.crl.pem
 chmod 0644 /var/www/intermediate.crl.pem
 
-
 ########################################################################################################################
 ## Done!
 ########################################################################################################################
+exit 0

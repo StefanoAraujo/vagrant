@@ -221,6 +221,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # ====================================================================================================================
     # Initial provisioning. Installs all the necessary packages.
     devbox.vm.provision :shell, :path => "vagrant/initial-provision.sh"
+    devbox.vm.provision :shell, :path => "vagrant/initial-openssl.sh"
 
     # Download and compile every configured PHP version
     data['multiphp'].each do |phpversion, values|
