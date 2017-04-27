@@ -39,6 +39,18 @@ projects:
         docimport:
             type: relink
             source: /mnt/Projects/akeeba/docimport
+        contactus:
+            type: relink
+            source: /mnt/Projects/akeeba/contactus
+        loginguard:
+            type: relink
+            source: /mnt/Projects/akeeba/loginguard
+        sociallogin:
+            type: relink
+            source: /mnt/Projects/akeeba/sociallogin
+        maxmindprovider:
+            type: relink
+            source: /mnt/Projects/akeeba/maxmindprovider
         fof3:
             type: library
             source: /mnt/Projects/akeeba/fof3/fof
