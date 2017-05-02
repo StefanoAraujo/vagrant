@@ -73,32 +73,32 @@ vagrantfile-local:
             default: 0
             hostname: vagrant55.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.5.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.3.tgz
         php56:
             install: 1
             source_url: http://de1.php.net/get/php-5.6.30.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant56.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.5.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.3.tgz
         php70:
             install: 1
-            source_url: http://de1.php.net/get/php-7.0.17.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-7.0.18.tar.bz2/from/this/mirror
             default: 1
             hostname: vagrant70.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.5.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.3.tgz
         php71:
             install: 1
-            source_url: http://de1.php.net/get/php-7.1.3.tar.bz2/from/this/mirror
+            source_url: http://de1.php.net/get/php-7.1.4.tar.bz2/from/this/mirror
             default: 0
             hostname: vagrant71.up
             xdebug_install: 1
-            xdebug_url: https://xdebug.org/files/xdebug-2.5.1.tgz
+            xdebug_url: https://xdebug.org/files/xdebug-2.5.3.tgz
     extrascripts:
         phpmyadmin:
             install: 1
-            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.6.6/phpMyAdmin-4.6.6-english.tar.gz
+            source_url: https://files.phpmyadmin.net/phpMyAdmin/4.7.0/phpMyAdmin-4.7.0-english.tar.gz
         pml:
             install: 1
             source_url: https://github.com/potsky/PimpMyLog/tarball/master
