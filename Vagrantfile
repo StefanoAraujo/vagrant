@@ -130,6 +130,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
     end
 
+    # Vbguest plugin configuration
+    # set auto_update to false, if you do NOT want to check the correct
+    # VirtualBox guest additions version when booting this machine
+    config.vbguest.auto_update = true
+
+    # Enable to NOT download the ISO file from the web
+    #config.vbguest.no_remote = true
+
+    # If you uncomment the previous line you need to tell the Vbguest plugin where to find the guest additions ISO:
+    #config.vbguest.iso_path = "#{ENV['HOME']}/Downloads/VBoxGuestAdditions.iso"
+    # or a URL:
+    #config.vbguest.iso_path = "http://www.example.com/VirtualBox/%{version}/VBoxGuestAdditions.iso"
+    # or relative to the Vagrantfile:
+    #config.vbguest.iso_path = File.expand_path("../relative/path/to/VBoxGuestAdditions.iso", __FILE__)
+
     # Set up project folders
     projects['synced_folder'].each do |i, folder|
       if folder['source'] != '' && folder['target'] != ''
